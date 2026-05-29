@@ -1,0 +1,85 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://yalter.github.io/niri/Configuration:-Introduction
+include "/etc/niri/monitors.kdl"
+include "/etc/niri/background.kdl"
+include "keybinds.kdl"
+include "startup.kdl"
+include "layout.kdl"
+include "window-rules.kdl"
+
+
+input {
+    focus-follows-mouse max-scroll-amount="95%"
+    keyboard {
+        xkb {
+            // You can set rules, model, layout, variant and options.
+            // For more information, see xkeyboard-config(7).
+
+            // For example:
+            // layout "us,ru"
+            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+
+            // If this section is empty, niri will fetch xkb settings
+            // from org.freedesktop.locale1. You can control these using
+            // localectl set-x11-keymap.
+        }
+        numlock
+    }
+
+    // Next sections include libinput settings.
+    // Omitting settings disables them, or leaves them at their default values.
+    // All commented-out settings here are examples, not defaults.
+    touchpad {
+        // off
+        tap
+        // dwt
+        // dwtp
+        // drag false
+        // drag-lock
+        natural-scroll
+        accel-speed 0.2
+        // accel-profile "flat"
+        scroll-method "two-finger"
+        disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+}
+
+// kill annoying "heres what commands exist!!!!one! popup
+hotkey-overlay {
+    skip-at-startup
+}
+
+// oh my godddd bruh i picked niri to get AWAY from gnome WHY is middle mouse paste back
+clipboard {
+    disable-primary
+}
+
+// csd = client side decorations
+prefer-no-csd
+
+// The path is formatted with strftime(3) to give you the screenshot date and time.
+// You can also set this to null to disable saving screenshots to disk.
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+
+// https://yalter.github.io/niri/Configuration:-Animations
+animations {
+    // off
+    // slowdown 3.0
+}
+
+gestures { 
+  hot-corners {
+    bottom-right
+  }
+}
