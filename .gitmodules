@@ -1,3 +1,6 @@
+[submodule "vimcfg"]
+	path = vimcfg
+	url = git@github.com:Korimer/vimcfg
 [submodule "nvim"]
 	path = nvim
-	url = git@github.com:/Korimer/vimcfg
+	url = git@github.com:Korimer/vimcfg
