@@ -5,7 +5,6 @@
 include "/etc/niri/monitors.kdl"
 include "/etc/niri/background.kdl"
 include "keybinds.kdl"
-include "startup.kdl"
 include "layout.kdl"
 include "window-rules.kdl"
 
