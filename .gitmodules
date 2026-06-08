@@ -2,3 +2,7 @@
 	path = nvim
 	url = git@github.com:Korimer/vimcfg
 	branch = main
+[submodule "Quotes"]
+	path = quotes
+	url = git@github.com:Korimer/Quotes.git
+	branch = main
