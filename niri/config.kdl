@@ -2,12 +2,10 @@
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
-include "/etc/niri/monitors.kdl"
-include "/etc/niri/background.kdl"
 include "keybinds.kdl"
 include "layout.kdl"
 include "window-rules.kdl"
-
+include optional=true "/etc/niri/nix-managed.kdl"
 
 input {
     focus-follows-mouse max-scroll-amount="95%"
