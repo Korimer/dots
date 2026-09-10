@@ -1,0 +1,54 @@
+{
+  "buttons-per-row": "2",
+  "show-keybinds": true,
+  "close-on-lost-focus": true,
+  "margin": 200,
+  "margin-top": 50,
+  "margin-bottom": 50,
+  "margin-right": 200,
+  "margin-left": 200,
+  "buttons": [
+    {
+      "label": "lock",
+      "action": "loginctl lock-session",
+      "text": "Lock",
+      "keybind": "l",
+      "icon": "./lock.svg"
+    },
+    {
+      "label": "hibernate",
+      "action": "systemctl hibernate",
+      "text": "Hibernate",
+      "keybind": "h",
+      "icon": "./hibernate.svg"
+    },
+    {
+      "label": "logout",
+      "action": "loginctl terminate-user $USER",
+      "text": "Logout",
+      "keybind": "e",
+      "icon": "./icons/logout.svg"
+    },
+    {
+      "label": "shutdown",
+      "action": "systemctl poweroff",
+      "text": "Shutdown",
+      "keybind": "s",
+      "icon": "./icons/shutdown.svg"
+    },
+    {
+      "label": "suspend",
+      "action": "systemctl suspend",
+      "text": "Suspend",
+      "keybind": "u",
+      "icon": "./icons/suspend.svg"
+    },
+    {
+      "label": "reboot",
+      "action": "systemctl reboot",
+      "text": "Reboot",
+      "keybind": "r",
+      "icon": "./icons/reboot.svg"
+    }
+  ]
+}
