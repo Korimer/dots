@@ -3,7 +3,6 @@
  * Or use your own colors. Both work, but using your own colors may break the automatic light/dark theme function.
  */
 
-
 window {
   background-color: rgba(12, 12, 12, 0.4);
 }
@@ -20,9 +19,15 @@ button {
   transform: skewX(-20deg);
   color: oklab(from var(--view-fg-color) var(--standalone-color-oklab));
   background-color: var(--view-bg-color);
-  border: none;
-  padding: 100px;
   opacity: .8;
+  box-sizing: border-box;
+  /* GTK expansion and sizing override */
+  min-height: 100px;
+  min-width: 100px;
+  padding: 0px;
+  margin: 0px;
+  /* Forces GTK to let the widget grow */
+  -gtk-keychain-expands: true; 
 }
 
 button label.action-name {

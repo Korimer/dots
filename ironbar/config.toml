@@ -11,15 +11,25 @@ type = "brightness"
 [[start]]
 type = "volume"
 max_volume = 150
+[[start]]
+type = "clipboard"
+
+### Center ###
+[[center]]
+type = "focused"
+show_title = false
 
 [[center]]
 type = "workspaces"
 all_monitors = false
 favorites = ["1", "2", "3"]
 
-### Center ###
 [[center]] # Apps
 type = "launcher"
+
+[[center]]
+type = "focused"
+show_title = false
 
 
 ### End ###
@@ -27,28 +37,11 @@ type = "launcher"
 class = "network-menu"
 type = "custom"
 [[end.bar]]
-# TODO: idk bro fix it
 type = "network_manager"
-on_click = "nm-connection-editor"
-[end.bar.profiles.wifi_connected]
-when = { type = "wifi", state = "connected" }
-icon = "󰖩"
-[end.bar.profiles.wifi_disconnected]
-when = { type = "wifi", state = "disconnected" }
-icon = "󰖪"
-[end.bar.profiles.wired_connected]
-when = { type = "wired", state = "connected" }
-icon = "󰈀"
-[end.bar.profiles.wired_disconnected]
-when = { type = "wired", state = "disconnected" }
-icon = "󰌙"
-
-#[[end.bar]]
-#type = "button"
-#label = ""
-#on_click = "!nm-connection-editor"
-
-#[[end.bar]]
+[[end.bar]]
+type = "button"
+label = ""
+on_click = "!nm-connection-editor"
 
 
 [[end]]
