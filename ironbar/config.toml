@@ -43,7 +43,12 @@ icon = "󰈀"
 when = { type = "wired", state = "disconnected" }
 icon = "󰌙"
 
-[[end.bar]]
+#[[end.bar]]
+#type = "button"
+#label = ""
+#on_click = "!nm-connection-editor"
+
+#[[end.bar]]
 
 
 [[end]]
