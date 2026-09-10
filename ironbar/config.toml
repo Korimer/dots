@@ -13,6 +13,8 @@ type = "volume"
 max_volume = 150
 [[start]]
 type = "clipboard"
+[[start]]
+type = "script"
 
 ### Center ###
 [[center]]
@@ -41,14 +43,12 @@ type = "network_manager"
 [[end.bar]]
 type = "button"
 label = ""
-on_click = "!nm-connection-editor"
-
+on_click = "!pidof nm-connection-editor && pkill -f nm-connection-editor || nm-connection-editor"
 
 [[end]]
 type = "clock"
 
 [[end]]
-# FIXME: install upower
 type = "battery"
 
 [[end]]
