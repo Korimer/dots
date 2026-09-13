@@ -1,9 +1,7 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "center",
-  "positionY": "bottom",
-  "control-center-positionX": "left",
-  "control-center-positionY": "top",
+  "positionX": "left",
+  "positionY": "top",
   "cssPriority": "user",
   "control-center-margin-bottom": 40,
   "timeout": 5,
