@@ -1,6 +1,6 @@
 [[bar.layout]]
 monitor = "*"
-left = ["brightness", "volume", "systray", "custom-clipboard", "custom-quotes"]
+left = ["custom-power-menu", "brightness", "volume", "systray"]
 center = ["niri-workspaces", "window-title"]
 right = ["ram", "cpu", "network", "clock", "battery", "dashboard"]
 
@@ -11,5 +11,10 @@ hide-trailing-empty = false
 [modules.window-title]
 label-show = false
 
+[[modules.custom]]
+id = "power-menu"
+icon-name = "ld-power-symbolic"
+label-show = false
+left-click = "wleave"
 # Todo: Clipboard
 # Todo: Quotes

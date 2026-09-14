@@ -13,42 +13,42 @@
       "action": "loginctl lock-session",
       "text": "Lock",
       "keybind": "l",
-      "icon": "./lock.svg"
+      "icon": "./.config/wleave/icons/lock.svg"
     },
     {
       "label": "hibernate",
       "action": "systemctl hibernate",
       "text": "Hibernate",
       "keybind": "h",
-      "icon": "./hibernate.svg"
+      "icon": "./.config/wleave/icons/hibernate.svg"
     },
     {
       "label": "logout",
       "action": "loginctl terminate-user $USER",
       "text": "Logout",
       "keybind": "e",
-      "icon": "./icons/logout.svg"
+      "icon": "./.config/wleave/icons/logout.svg"
     },
     {
       "label": "shutdown",
       "action": "systemctl poweroff",
       "text": "Shutdown",
       "keybind": "s",
-      "icon": "./icons/shutdown.svg"
+      "icon": "./.config/wleave/icons/shutdown.svg"
     },
     {
       "label": "suspend",
       "action": "systemctl suspend",
       "text": "Suspend",
       "keybind": "u",
-      "icon": "./icons/suspend.svg"
+      "icon": "./.config/wleave/icons/suspend.svg"
     },
     {
       "label": "reboot",
       "action": "systemctl reboot",
       "text": "Reboot",
       "keybind": "r",
-      "icon": "./icons/reboot.svg"
+      "icon": "./.config/wleave/icons/reboot.svg"
     }
   ]
 }
