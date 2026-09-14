@@ -1,5 +1,15 @@
 [[bar.layout]]
 monitor = "*"
-left = ["dashboard"]
-center = ["clock"]
-right = ["battery", "network", "volume", "systray"]
+left = ["brightness", "volume", "systray", "custom-clipboard", "custom-quotes"]
+center = ["niri-workspaces", "window-title"]
+right = ["ram", "cpu", "network", "clock", "battery", "dashboard"]
+
+[modules.niri-workspaces]
+app-icons-show = true
+hide-trailing-empty = false
+
+[modules.window-title]
+label-show = false
+
+# Todo: Clipboard
+# Todo: Quotes
