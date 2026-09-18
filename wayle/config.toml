@@ -1,12 +1,11 @@
 [[bar.layout]]
 monitor = "*"
 left = ["custom-power-menu", "brightness", "volume", "systray"]
-center = ["niri-workspaces", "window-title"]
+center = ["mango-workspaces", "window-title"]
 right = ["ram", "cpu", "network", "clock", "battery", "dashboard"]
 
-[modules.niri-workspaces]
+[modules.mango-workspaces]
 app-icons-show = true
-hide-trailing-empty = false
 
 [modules.window-title]
 label-show = false
