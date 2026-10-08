@@ -1,0 +1,132 @@
+# Mango Window Manager Configuration (TOML Format)
+
+# Mindset: SUPER navigates windows, ALT navigates workspaces/meta
+
+[bind.default]
+"SUPER+r" = "spawn,fuzzel"
+"SUPER+q" = "spawn,kitty"
+"SUPER+c" = "killclient,"
+"SUPER+SHIFT+r" = "reload_config,"
+"SUPER+CTRL+SHIFT+DELETE" = "quit,"
+"SUPER+Tab" = "focusstack,next"
+
+"ALT+comma" = "switch_layout,prev"
+"ALT+period" = "switch_layout,next"
+"ALT+v" = "setlayout,vertical_tile"
+
+"SUPER+H" = "focusdir,left"
+"SUPER+Left" = "focusdir,left"
+"SUPER+J" = "focusdir,down"
+"SUPER+Down" = "focusdir,down"
+"SUPER+K" = "focusdir,up"
+"SUPER+Up" = "focusdir,up"
+"SUPER+L" = "focusdir,right"
+"SUPER+Right" = "focusdir,right"
+
+"SUPER+CTRL+H" = "exchange_client,left"
+"SUPER+CTRL+Left" = "exchange_client,left"
+"SUPER+CTRL+J" = "exchange_client,down"
+"SUPER+CTRL+Down" = "exchange_client,down"
+"SUPER+CTRL+K" = "exchange_client,up"
+"SUPER+CTRL+Up" = "exchange_client,up"
+"SUPER+CTRL+L" = "exchange_client,right"
+"SUPER+CTRL+Right" = "exchange_client,right"
+
+"SUPER+SHIFT+H" = "focusmon,left"
+"SUPER+SHIFT+Left" = "focusmon,left"
+"SUPER+SHIFT+J" = "focusmon,down"
+"SUPER+SHIFT+Down" = "focusmon,down"
+"SUPER+SHIFT+K" = "focusmon,up"
+"SUPER+SHIFT+Up" = "focusmon,up"
+"SUPER+SHIFT+L" = "focusmon,right"
+"SUPER+SHIFT+Right" = "focusmon,right"
+
+"SUPER+CTRL+SHIFT+H" = "tagmon,left"
+"SUPER+CTRL+SHIFT+Left" = "tagmon,left"
+"SUPER+CTRL+SHIFT+J" = "tagmon,down"
+"SUPER+CTRL+SHIFT+Down" = "tagmon,down"
+"SUPER+CTRL+SHIFT+K" = "tagmon,up"
+"SUPER+CTRL+SHIFT+Up" = "tagmon,up"
+"SUPER+CTRL+SHIFT+L" = "tagmon,right"
+"SUPER+CTRL+SHIFT+Right" = "tagmon,right"
+
+"SHIFT+ALT+Left" = "viewtoleft,0"
+"SHIFT+ALT+Right" = "viewtoright,0"
+"CTRL+ALT+Left" = "tagtoleft,0"
+"CTRL+ALT+Right" = "tagtoright,0"
+
+"SUPER+1" = "view,1,0"
+"SUPER+2" = "view,2,0"
+"SUPER+3" = "view,3,0"
+"SUPER+4" = "view,4,0"
+"SUPER+5" = "view,5,0"
+"SUPER+6" = "view,6,0"
+"SUPER+7" = "view,7,0"
+"SUPER+8" = "view,8,0"
+"SUPER+9" = "view,9,0"
+
+"SUPER+ALT+1" = "tag,1,0"
+"SUPER+ALT+2" = "tag,2,0"
+"SUPER+ALT+3" = "tag,3,0"
+"SUPER+ALT+4" = "tag,4,0"
+"SUPER+ALT+5" = "tag,5,0"
+"SUPER+ALT+6" = "tag,6,0"
+"SUPER+ALT+7" = "tag,7,0"
+"SUPER+ALT+8" = "tag,8,0"
+"SUPER+ALT+9" = "tag,9,0"
+
+"SUPER+g" = "toggleglobal,"
+"ALT+Tab" = "togglejump,"
+"ALT+backslash" = "togglefloating,"
+"SUPER+a" = "togglemaximizescreen,"
+"SUPER+f" = "togglefullscreen,"
+"SUPER+SHIFT+f" = "togglefakefullscreen,"
+"ALT+s" = "minimized,"
+"ALT+SHIFT+s" = "restore_minimized,"
+"ALT+z" = "toggle_scratchpad,"
+
+"ALT+e" = "set_proportion,1.0"
+"ALT+x" = "switch_proportion_preset,"
+"ALT+SUPER+CTRL+Left" = "scroller_stack,left"
+"ALT+SUPER+CTRL+Right" = "scroller_stack,right"
+"ALT+SUPER+CTRL+Up" = "scroller_stack,up"
+"ALT+SUPER+CTRL+Down" = "scroller_stack,down"
+
+"ALT+SHIFT+Return" = "dwindle_toggle_split_direction,"
+
+# Mouse Bindings
+[mousebind.default]
+"SUPER+btn_left" = "moveresize,curmove"
+"SUPER+btn_right" = "moveresize,curresize"
+
+# Axis / Scroll Bindings
+[axisbind.default]
+"SUPER+UP" = "viewtoleft_have_client,"
+"SUPER+DOWN" = "viewtoright_have_client,"
+
+# Gesture Bindings
+[gesturebind.default]
+"none+left+3" = "focusdir,left"
+"none+right+3" = "focusdir,right"
+"none+up+3" = "focusdir,up"
+"none+down+3" = "focusdir,down"
+"none+right+4" = "viewprev_have_client,"
+"none+left+4" = "viewnext_have_client,"
+"none+up+4" = "enteroverview,"
+"none+down+4" = "leaveoverview,"
+
+[global]
+numlock_on = false
+xkb_rules_layout = "us"
+
+trackpad_natural_scrolling = true
+
+circle_layout = ["scroller", "deck", "tile", "grid"]
+
+[[rule.layer_rule]]
+animation_type_open = "zoom"
+layer_name = "rofi"
+
+[[rule.layer_rule]]
+animation_type_close = "zoom"
+layer_name = "rofi"
