@@ -3,5 +3,5 @@ configuration {
   combi-modes: [ window, drun, run ];
 }
 
-@theme "gruvbox-light"
+@theme "fullscreen-preview"
 
