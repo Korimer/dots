@@ -1,6 +1,9 @@
 # Mango Window Manager Configuration (TOML Format)
 
 # Mindset: SUPER navigates windows, ALT navigates workspaces/meta
+[global]
+source = ["/etc/mango/specializations.toml"]
+
 
 [bind.default]
 "SUPER+r" = "spawn,rofi -show drun"
