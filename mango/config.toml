@@ -4,6 +4,24 @@
 [global]
 source = ["/etc/mango/specializations.toml"]
 
+numlock_on = false
+xkb_rules_layout = "us"
+
+disable_middle_paste = true
+trackpad_natural_scrolling = true
+
+#multimonitor
+scratchpad_cross_monitor = true
+tag_gather = true
+
+#window behavior
+no_border_when_single = true
+smart_gaps = true
+tag_carousel = true
+enable_border_resize = false # disables left-clicking to resize
+
+
+circle_layout = ["scroller", "deck", "tile", "grid"]
 
 [bind.default]
 "SUPER+r" = "spawn,rofi -show drun"
@@ -117,14 +135,6 @@ source = ["/etc/mango/specializations.toml"]
 "none+left+4" = "viewnext_have_client,"
 "none+up+4" = "enteroverview,"
 "none+down+4" = "leaveoverview,"
-
-[global]
-numlock_on = false
-xkb_rules_layout = "us"
-
-trackpad_natural_scrolling = true
-
-circle_layout = ["scroller", "deck", "tile", "grid"]
 
 [[rule.layer_rule]]
 animation_type_open = "zoom"
