@@ -3,7 +3,7 @@
 kdots="/tmp/korimer-dots"
 tmpunused="/tmp/old-dots"
 
-git clone git@github.com:Korimer/dots "$kdots" 2>/dev/null
+git clone git@github.com:Korimer/dots "$kdots" --recursive 2>/dev/null
 result=$?
 if [ $result -ne 0 ]; then
   echo "Warning: Git directory $kdots already populated."
