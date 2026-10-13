@@ -14,26 +14,23 @@ folders=("$kdots"/*)
 shopt -u dotglob
 
 cd "$HOME/.config" || exit 1
-echo "this will modify the following files:"
-
-for file in "${folders[@]}"; do
-  echo "  $PWD/$(basename "$file")"
-done
-
-if [ "$1" != "-f" ]; then
-  read -p "Press Enter to Continue..."
-  hasinput=$?
-  if [ $hasinput -ne 0 ]; then
-    echo "Error: Not running from an interactive terminal."
-    exit 1
-  fi
-fi
 
 mkdir -p "$tmpunused"
-mv "${folders[@]}" "$tmpunused"
+
+for file in "${folders[@]}"; do
+  leaf=$(basename  "$file")
+  echo "moving  $PWD/$leaf to $tmpunused/$leaf"
+  mv "$PWD/$leaf" "$tmpunused/$leaf" 2>/dev/null
+done
 
 shopt -s dotglob
-mv /tmp/korimer-dots/* .
+mv "$kdots"/* .
 shopt -u dotglob
 
+rm install.sh
+rm README.md
+
 rm -rf "$kdots"
+
+echo "Done!"
+echo "Your old/moved dotfiles are present in $tmpunused".
