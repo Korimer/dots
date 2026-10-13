@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 kdots="/tmp/korimer-dots"
+tmpunused="/tmp/old-dots"
 
 git clone git@github.com:Korimer/dots "$kdots" 2>/dev/null
 result=$?
@@ -12,8 +13,8 @@ shopt -s dotglob
 folders=("$kdots"/*)
 shopt -u dotglob
 
-pushd "$HOME/.config.bak" || exit 1
-echo "this will delete the following files:"
+cd "$HOME/.config" || exit 1
+echo "this will modify the following files:"
 
 for file in "${folders[@]}"; do
   echo "  $PWD/$(basename "$file")"
@@ -28,12 +29,11 @@ if [ "$1" != "-f" ]; then
   fi
 fi
 
-rm -rf "${folders[@]}"
+mkdir -p "$tmpunused"
+mv "${folders[@]}" "$tmpunused"
 
 shopt -s dotglob
 mv /tmp/korimer-dots/* .
 shopt -u dotglob
 
 rm -rf "$kdots"
-
-popd || exit 1
