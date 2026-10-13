@@ -27,6 +27,10 @@ shopt -s dotglob
 mv "$kdots"/* .
 shopt -u dotglob
 
+
+git update-index --assume-unchanged install.sh
+git update-index --assume-unchanged README.md
+
 rm install.sh
 rm README.md
 
