@@ -1,0 +1,15 @@
+*
+!.gitignore
+!install.sh
+!dunst
+!ironbar
+!kitty
+!mango
+!niri
+!nvim
+!quotes
+!rofi
+!swaync
+!wayle
+!wleave
+!zsh
