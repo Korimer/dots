@@ -1,33 +1,22 @@
-*
-# Files
-!README.md
-!.gitignore
-!install.sh
+# Ignore everything by default
+/*
 
-# 
-!home-manager
-!home-manager/*
-!dunst
-!dunst/*
-!ironbar
-!ironbar/*
-!kitty
-!kitty/*
-!mango
-!mango/*
-!niri
-!niri/*
-!nvim
-!nvim/*
-!quotes
-!quotes/*
-!rofi
-!rofi/*
-!swaync
-!swaync/*
-!wayle
-!wayle/*
-!wleave
-!wleave/*
-!zsh
-!zsh/*
+# Keep readme and similar meta junk
+!/README.md
+!/.gitignore
+!/install.sh
+
+# Keep actual dots
+!/home-manager/
+!/dunst/
+!/ironbar/
+!/kitty/
+!/mango/
+!/niri/
+!/nvim/
+!/quotes/
+!/rofi/
+!/swaync/
+!/wayle/
+!/wleave/
+!/zsh/
