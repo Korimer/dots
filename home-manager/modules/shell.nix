@@ -18,6 +18,7 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
+      direnv hook fish | source
       set -g fish_greeting
     '';
   };
