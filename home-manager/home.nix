@@ -1,6 +1,10 @@
+{ userConfig, ... }:
+let
+  username = userConfig.username;
+in
 {
-  home.username = "korimer";
-  home.homeDirectory = "/home/korimer";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
