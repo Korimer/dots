@@ -3,7 +3,7 @@
 kdots="/tmp/korimer-dots"
 tmpunused="/tmp/old-dots"
 
-git clone git@github.com:Korimer/dots "$kdots" --recursive 2>/dev/null
+git clone git@github.com:Korimer/dots "$kdots" 2>/dev/null
 result=$?
 if [ $result -ne 0 ]; then
   echo "Warning: Git directory $kdots already populated."
@@ -30,6 +30,9 @@ shopt -u dotglob
 
 git update-index --assume-unchanged install.sh
 git update-index --assume-unchanged README.md
+
+git submodule init
+git submodule update --remote --no-fetch
 
 rm install.sh
 rm README.md
