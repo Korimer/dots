@@ -1,7 +1,6 @@
 # Ignore everything by default
 /*
 
-<<<<<<< Updated upstream
 # Keep readme and similar meta junk
 !/README.md
 !/.gitignore
@@ -21,32 +20,3 @@
 !/wayle/
 !/wleave/
 !/zsh/
-=======
-# 
-!home-manager
-!home-manager/**
-!dunst
-!dunst/**
-!ironbar
-!ironbar/**
-!kitty
-!kitty/**
-!mango
-!mango/**
-!niri
-!niri/**
-!nvim
-!nvim/**
-!quotes
-!quotes/**
-!rofi
-!rofi/**
-!swaync
-!swaync/**
-!wayle
-!wayle/**
-!wleave
-!wleave/**
-!zsh
-!zsh/**
->>>>>>> Stashed changes
