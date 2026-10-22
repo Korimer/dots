@@ -1,8 +1,8 @@
 [[bar.layout]]
 monitor = "*"
-left = ["custom-power-menu", "brightness", "volume", "systray"]
+left = ["custom-power-menu", "brightness", "volume", "media", "systray"]
 center = ["mango-workspaces", "window-title"]
-right = ["ram", "cpu", "network", "clock", "battery", "dashboard"]
+right = ["ram", "cpu", "network", "clock", "battery", "notifications"]
 
 [modules.mango-workspaces]
 app-icons-show = true
