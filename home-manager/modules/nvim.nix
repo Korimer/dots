@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -15,6 +16,10 @@
       jupyter-client
       ipython
       nbformat
+      jupytext
+    ];
+
+    extraPackages = with pkgs.python3Packages; [
       jupytext
     ];
   };
