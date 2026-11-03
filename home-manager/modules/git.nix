@@ -18,6 +18,11 @@
 
       user.name = "Korimer";
       user.email = "thekclov@gmail.com";
+
+      core.excludesFile = ''
+        /.direnv
+        /.venv
+      '';
     };
   };
 }
