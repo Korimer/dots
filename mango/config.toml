@@ -25,7 +25,7 @@ no_border_when_single = false
 smart_gaps = false
 
 
-circle_layout = ["scroller", "deck", "tile", "grid"]
+circle_layout = ["tile", "scroller"]
 
 [bind.default]
 "SUPER                  + r"            =  "spawn,rofi -show drun"
@@ -36,7 +36,7 @@ circle_layout = ["scroller", "deck", "tile", "grid"]
 
 "ALT                    + comma"        =  "switch_layout,prev"
 "ALT                    + period"       =  "switch_layout,next"
-"ALT                    + v"            =  "setlayout,vertical_tile"
+"ALT                    + v"            =  "setlayout,vertical_scroller"
 
 # Move focus in tag
 "SUPER                  + H"            =  "focusdir,left"
