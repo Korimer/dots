@@ -4,6 +4,33 @@ left = ["custom-power-menu", "brightness", "volume", "media", "systray"]
 center = ["mango-workspaces", "window-title"]
 right = ["ram", "cpu", "network", "clock", "battery", "notifications"]
 
+# Icons kept
+[modules.volume]
+icon-show = true
+
+[modules.battery]
+icon-show = true
+
+# Icons hidden
+[modules.brightness]
+icon-show = false
+
+[modules.media]
+icon-show = false
+
+[modules.ram]
+icon-show = false
+
+[modules.cpu]
+icon-show = false
+
+[modules.network]
+icon-show = false
+
+[modules.clock]
+icon-show = false
+
+# Your existing settings
 [modules.mango-workspaces]
 app-icons-show = true
 
@@ -15,5 +42,6 @@ id = "power-menu"
 icon-name = "ld-power-symbolic"
 label-show = false
 left-click = "wleave"
+
 # Todo: Clipboard
 # Todo: Quotes
