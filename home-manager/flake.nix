@@ -3,6 +3,12 @@
 
   inputs = {
     import-tree.url = "github:denful/import-tree";
+
+    helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,7 +17,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, import-tree, ... }:
+    inputs@{ nixpkgs, home-manager, import-tree, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -34,6 +40,7 @@
                 else null;
             in
           {
+            inherit inputs;
             userConfig = {
               inherit system;
               inherit username;

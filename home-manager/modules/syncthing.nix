@@ -13,38 +13,37 @@ let
   allDevices = builtins.attrNames devices;
 in
 {
-  services.syncthing = {
-    
-    enable = true;
-    overrideDevices = true;
-    overrideFolders = true;
-
-    settings.options = {
-      urAccepted = 1; # allows syncthing to send usage data
-      globalAnnounceServers = [ "https://funeralrubicon.duckdns.org:8443" ];
-    };
-
-    key = config.age.secrets."syncthing_key_${config.networking.hostName}".path;
-    cert = config.age.secrets."syncthing_cert_${config.networking.hostName}".path;
-
-    settings = {
-      # awesome scoping win
-      gui.user = "admin";
-      guipasswordFile = config.age.secrets.syncthing_pw.path;
-
-      devices = builtins.mapAttrs (_: value: { id = value; }) devices;
-
-      folders = {
-        "GlobalSync" = {
-          path = "/etc/GlobalSync";
-          devices = allDevices;
-        };
-        "NixSync" = {
-          path = "/etc/nixos";
-          devices = allDevices;
-        };
-      };
-    };
-  };
+#  services.syncthing = {
+#    
+#    enable = true;
+#    overrideDevices = true;
+#    overrideFolders = true;
+#
+#    settings.options = {
+#      urAccepted = 1; # allows syncthing to send usage data
+#      globalAnnounceServers = [ "https://funeralrubicon.duckdns.org:8443" ];
+#    };
+#
+#    key = config.age.secrets."syncthing_key_${config.networking.hostName}".path;
+#    cert = config.age.secrets."syncthing_cert_${config.networking.hostName}".path;
+#
+#    settings = {
+#      # awesome scoping win
+#      gui.user = "admin";
+#      guipasswordFile = config.age.secrets.syncthing_pw.path;
+#
+#      devices = builtins.mapAttrs (_: value: { id = value; }) devices;
+#
+#      folders = {
+#        "GlobalSync" = {
+#          path = "/etc/GlobalSync";
+#          devices = allDevices;
+#        };
+#        "NixSync" = {
+#          path = "/etc/nixos";
+#          devices = allDevices;
+#        };
+#      };
+#    };
+#  };
 }
-
