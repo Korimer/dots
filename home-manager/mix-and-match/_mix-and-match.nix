@@ -1,21 +1,21 @@
 { config, pkgs, lib, ... }:
 let
-  mnm = config.mnm.definitions;
-  allDeclared = builtins.attrNames mnm;
+  convertName = name: lib.toUpper (builtins.replaceStrings [ "-" ] [ "_" ] name);
 
-  make = name:
+  make = name: value:
     let
-      value = mnm.${name};
       executable = if lib.isDerivation value
         then lib.getExe value
         else value;
     in
-      lib.nameValuePair
-        name
-        (pkgs.writeShellScriptBin "hm-exec-${name}" "${executable} $@")
-      ;
+      pkgs.writeShellScriptBin "hm-exec-${name}" "${executable} $@";
 
-  resolvedPackages = builtins.listToAttrs (map make allDeclared);
+  resolvedPackages = builtins.mapAttrs make config.mnm.definitions;
+  resolvedPackagesUppercase = lib.mapAttrs' (name: value:
+    lib.nameValuePair
+      (convertName name)
+      (lib.mkDefault (lib.getExe value))
+  ) resolvedPackages;
 in
 {
   options.mnm = lib.mkOption {
@@ -37,6 +37,7 @@ in
     };
   };
 
+  config.home.sessionVariables = resolvedPackagesUppercase;
   config.mnm.packages = resolvedPackages;
   config.home.packages = builtins.attrValues resolvedPackages;
 }
