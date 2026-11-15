@@ -1,7 +1,7 @@
 [[bar.layout]]
 monitor = "*"
 left = ["custom-power-menu", "brightness", "volume", "media", "systray"]
-center = ["mango-workspaces", "window-title"]
+center = ["niri-workspaces", "window-title"]
 right = ["ram", "cpu", "network", "clock", "battery", "notifications"]
 
 # Icons kept

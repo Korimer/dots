@@ -1,12 +1,14 @@
 binds {
-
-    //Homemade mods
-    Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen: swaylock" {
-      spawn "loginctl" "lock-session"
+    //Homemade binds
+    Mod+Q hotkey-overlay-title="Open a Terminal" { spawn "hm-exec-terminal"; }
+    Mod+B hotkey-overlay-title="Open a Browser" { spawn "hm-exec-browser"; }
+    Mod+R hotkey-overlay-title="Run an Application" { spawn "hm-exec-launcher"; }
+    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" {
+      spawn "hm-exec-lock-session"
     }
-    Mod+Shift+S { screenshot; }
+    Mod+Ctrl+Shift+S { spawn "hm-exec-fullscreenshot"; }
+    Mod+Shift+S { spawn "hm-exec-localscreenshot"; }
+    Mod+S { spawn "hm-exec-globalscreenshot"; }
 
 
     // Keys consist of modifiers separated by + signs, followed by an XKB key name

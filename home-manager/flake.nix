@@ -4,9 +4,13 @@
   inputs = {
     import-tree.url = "github:denful/import-tree";
 
-    helium = {
-      url = "github:schembriaiden/helium-browser-nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+  zen-browser = {
+    url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -27,8 +31,13 @@
 
           modules = [
             ./home.nix
+
             (import-tree ./modules)
+
             (./peruser + "/${user}.nix")
+
+            (import-tree ./mix-and-match)
+            ./mix-and-match/_mix-and-match.nix
           ];
 
           extraSpecialArgs =

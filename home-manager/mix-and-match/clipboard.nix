@@ -1,0 +1,3 @@
+{
+  mnm.definitions.clipboard = "";
+}

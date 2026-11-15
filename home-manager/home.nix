@@ -19,4 +19,6 @@ in
   };
 
   programs.home-manager.enable = true;
+  xdg.mimeApps.enable = true;
+  #xdg.portal.enable = true;
 }
