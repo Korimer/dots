@@ -1,4 +1,5 @@
 { lib, pkgs, ... }:
 {
-  mnm.definitions.editor = "${lib.getExe pkgs.nvim}";
+  #home.packages = with pkgs; [ neovide (lib.lowPrio neovim) ];
+  #mnm.definitions.editor = "${lib.getExe pkgs.neovide}";
 }

@@ -8,7 +8,7 @@ let
         then lib.getExe value
         else value;
     in
-      pkgs.writeShellScriptBin "hm-exec-${name}" "${executable} $@";
+      pkgs.writeShellScriptBin "hm-exec-${name}" "exec ${executable} $@";
 
   resolvedPackages = builtins.mapAttrs make config.mnm.definitions;
   resolvedPackagesUppercase = lib.mapAttrs' (name: value:
