@@ -1,4 +1,4 @@
 { lib, pkgs, ... }:
 {
-  mnm.definitions.editor = "${lib.getExe pkgs.rofi} -show drun";
+  mnm.definitions.editor = "${lib.getExe pkgs.nvim}";
 }

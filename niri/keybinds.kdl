@@ -1,6 +1,7 @@
 binds {
     //Homemade binds
     Mod+Q hotkey-overlay-title="Open a Terminal" { spawn "hm-exec-terminal"; }
+    Mod+E hotkey-overlay-title="Open a Editor" { spawn "hm-exec-editor"; }
     Mod+B hotkey-overlay-title="Open a Browser" { spawn "hm-exec-browser"; }
     Mod+R hotkey-overlay-title="Run an Application" { spawn "hm-exec-launcher"; }
     Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" {
