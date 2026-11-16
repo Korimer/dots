@@ -5,7 +5,12 @@
 include "keybinds.kdl"
 include "layout.kdl"
 include "window-rules.kdl"
-include optional=true "/etc/niri/nix-managed.kdl"
+
+include "plugins/oniri.kdl"
+include "plugins/piri.kdl"
+include "plugins/animations.kdl"
+
+include optional=true "~/.local/lib/niri/hm-conf.kdl"
 
 input {
     focus-follows-mouse max-scroll-amount="95%"

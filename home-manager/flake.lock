@@ -51,11 +51,46 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1794537146,
+        "narHash": "sha256-Wpz/7x/YWnDIBu7yj6ixe8j6fIMsidd9Y+o1PqPF3iM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d5cc6833999746cffdfe0598f7bc801a57b887a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "oniri": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1794186131,
+        "narHash": "sha256-/SkRA0Tok+WSpAkcK17AYbmr9OFHD0FLIOS16bDaxoU=",
+        "owner": "Antiz96",
+        "repo": "oniri",
+        "rev": "b8b21b755f04788bc1887661548660d17d43605f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Antiz96",
+        "repo": "oniri",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs",
+        "oniri": "oniri",
         "zen-browser": "zen-browser"
       }
     },
