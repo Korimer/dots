@@ -9,7 +9,7 @@ let
   };
 in
 {
-  imports = [ zen.homeModules.twilight-official ];
+  imports = [ zen.homeModules.default ];
 
   programs.zen-browser = {
     enable = true;
