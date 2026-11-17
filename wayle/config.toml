@@ -31,7 +31,7 @@ icon-show = false
 icon-show = false
 
 # Your existing settings
-[modules.mango-workspaces]
+[modules.niri-workspaces]
 app-icons-show = true
 
 [modules.window-title]
