@@ -4,106 +4,83 @@ animations {
     spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
   }
 
+  // https://github.com/liixini/shaders/tree/main/heat-melt
   window-open {
-    duration-ms 1400
-    curve "ease-out-expo"
+    duration-ms 500
+    curve "ease-out-cubic"
     custom-shader r"
-      vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-            float p = niri_clamped_progress;
-            vec2 uv = coords_geo.xy;
+    
+            // Ported from skwd-wall heat-melt transition
 
-            float dist = length(uv - 0.5) * 2.0;
-            float start_delay = dist * 0.6;
-            float t = clamp((p - start_delay) / (1.0 - start_delay), 0.0, 1.0);
-            float strong_t = pow(t, 2.5);
-
-            if (p < start_delay) return vec4(0.0);
-
-            vec2 center = vec2(0.5);
-            vec2 from_center = uv - center;
-            vec2 spawn = center + from_center * 0.1;
-            vec2 render_pos = mix(spawn, uv, strong_t);
-
-            vec3 tex_coords = niri_geo_to_tex * vec3(render_pos, 1.0);
-            vec4 color = texture2D(niri_tex, tex_coords.st);
-
-            bool is_window_area = uv.x >= -0.075 && uv.x <= 1.075 &&
-                                  uv.y >= -0.075 && uv.y <= 1.075;
-
-            float alpha = mix(1.0, t, pow(dist, 0.5));
-            if (!is_window_area) {
-                float ring_fade = 1.0 - smoothstep(0.99, 0.999, p);
-                alpha *= ring_fade;
+            float hm_rand(vec2 co) { return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453); }
+            vec3 hm_mod289_3(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+            vec2 hm_mod289_2(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+            vec3 hm_permute(vec3 x) { return hm_mod289_3(((x * 34.0) + 1.0) * x); }
+            float hm_snoise(vec2 v) {
+                const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+                vec2 i = floor(v + dot(v, C.yy));
+                vec2 x0 = v - i + dot(i, C.xx);
+                vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+                vec4 x12 = x0.xyxy + C.xxzz;
+                x12.xy -= i1;
+                i = hm_mod289_2(i);
+                vec3 q = hm_permute(hm_permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+                vec3 m = max(0.5 - vec3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+                m = m * m; m = m * m;
+                vec3 x = 2.0 * fract(q * C.www) - 1.0;
+                vec3 h = abs(x) - 0.5;
+                vec3 ox = floor(x + 0.5);
+                vec3 a0 = x - ox;
+                m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
+                vec3 g;
+                g.x = a0.x * x0.x + h.x * x0.y;
+                g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+                return 130.0 * dot(m, g);
             }
-            return color * alpha;
-          }
+
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                float p = niri_clamped_progress;
+                vec2 uv = coords_geo.xy;
+                vec3 tc = niri_geo_to_tex * vec3(uv, 1.0);
+                vec4 win = texture2D(niri_tex, tc.st);
+
+                vec2 center = vec2(1.0, 1.0);
+                float dist = distance(center, uv) - p * exp(hm_snoise(vec2(uv.x, 0.0)));
+                float r = p - hm_rand(vec2(uv.x, 0.1));
+                float reveal = (dist <= r) ? 1.0 : (p * p * p);
+
+                return win * reveal;
+            }
     "
   }
 
 
-
-  // This was a nightmare to make but here
-  // original code from; https://github.com/XansiVA
-  // Fixed: use raw strings (r"...") for GLSL shaders to match all other
-  // animations, and replaced ternary int-to-float cast with mix/step to
-  // avoid "implicit cast from int to float" (GL error C7011) on strict
-  // GLSL drivers, which caused the shader to silently fail to compile.
+  // https://github.com/Xansidev/nirimation/blob/main/animations/pop-drop.kdl
   window-close {
-    duration-ms 700
-    curve "ease-out-quad"
-    custom-shader r"
-    vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-      float progress = niri_clamped_progress;
+          duration-ms 500
+      curve "linear"
+      custom-shader r"
+        vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
+          float progress = niri_clamped_progress * niri_clamped_progress;
+          vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
+          coords.y -= progress * 1440.0;
+          float random = (niri_random_seed - 0.5) / 2.0;
+          random = sign(random) - random;
+          float max_angle = 0.5 * random;
+          float angle = progress * max_angle;
+          mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+          coords = rotate * coords;
+          coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
+          vec3 coords_tex = niri_geo_to_tex * coords_geo;
+          vec4 color = texture2D(niri_tex, coords_tex.st);
+          color.a *= (1.0 - progress);
 
-      // I prefer my ribbons vertical only
-      // So i removed the random
-      float random_angle = 1.57075;
-
-      // Rotate the coordinates to create tilted ribbons
-      vec2 coords = coords_geo.xy - 0.5; // center
-      float cos_a = cos(random_angle);
-      float sin_a = sin(random_angle);
-      vec2 rotated = vec2(
-      coords.x * cos_a - coords.y * sin_a,
-      coords.x * sin_a + coords.y * cos_a
-      );
-
-      // Now work with rotated Y position for ribbon indexing
-      float y_pos = rotated.y + 0.5;
-
-      // Equal-sized ribbons (20 total)
-      float ribbon_count = 30.0;
-      float ribbon_index = floor(y_pos * ribbon_count);
-
-      // Alternating pattern: even = left, odd = right
-      float is_even = step(mod(ribbon_index, 2.0), 0.5);
-      float direction = is_even * -2.0 + 1.0;
-
-      // Cascading delay
-      float delay = ribbon_index / ribbon_count * 0.5;
-      float ribbon_progress = clamp((progress - delay) / (1.0 - delay), 0.0, 1.0);
-
-      // Slide along the rotated X axis
-      rotated.x += ribbon_progress * direction * 2.0;
-
-      // Rotate back to get final coordinates
-      coords = vec2(
-      rotated.x * cos_a + rotated.y * sin_a,
-      -rotated.x * sin_a + rotated.y * cos_a
-      );
-      coords += 0.5; // uncenter
-
-      // Regular sampling
-      vec3 coords_tex = niri_geo_to_tex * vec3(coords.x, coords.y, 1.0);
-      vec4 color = texture2D(niri_tex, coords_tex.xy);
-
-      // Check if ribbon has moved out of bounds
-      if (coords.x < 0.0 || coords.x > 1.0) {
-        return vec4(0.0);
-      }
-
-      return color;
-    }"
+          return color;
+        }
+        vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+          return fall_and_rotate(coords_geo, size_geo);
+        }
+      "
   }
 
 
