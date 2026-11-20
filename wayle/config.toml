@@ -1,7 +1,7 @@
 [[bar.layout]]
 monitor = "*"
 left = ["custom-power-menu", "brightness", "volume", "media", "systray"]
-center = ["niri-workspaces", "window-title"]
+center = ["mango-workspaces", "window-title"]
 right = ["ram", "cpu", "network", "clock", "battery", "notifications"]
 
 # Icons kept
@@ -31,7 +31,7 @@ icon-show = false
 icon-show = false
 
 # Your existing settings
-[modules.niri-workspaces]
+[modules.mango-workspaces]
 app-icons-show = true
 
 [modules.window-title]
